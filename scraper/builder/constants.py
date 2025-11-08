@@ -1,0 +1,17 @@
+FIELD_ALIASES = {
+    "headline": "headline",
+    "address": "address",
+    "price": "price",
+    "description": "description",
+    "category": "Category",
+    "date_available": "Date Available",
+    "date_posted": "Date Posted",
+    "shared": "Shared",
+    "sublet": "Sublet",
+    "beds": "Beds",
+    "listing_id": "listing_id",
+    "parking": "Parking",
+    "no_smoking": "No Smoking",
+    "laundry_facilities": "Laundry Facilities",
+    "cooking_facilities": "Cooking Facilities",
+}
