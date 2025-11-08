@@ -38,9 +38,11 @@ jobs:
       run: sam --version
 
     - name: Build application
+      working-directory: scraper
       run: sam build
 
     - name: Deploy to AWS
+      working-directory: scraper
       run: |
         sam deploy \
           --stack-name ${{ env.STACK_NAME }} \
