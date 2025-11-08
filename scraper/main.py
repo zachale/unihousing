@@ -1,16 +1,52 @@
-from shared.mongo import get_mongo_client, get_database
+import json
+import os
+import boto3
 
+def lambda_handler(event, context):
+    """
+    Producer Lambda handler - sends Hello World message to SQS queue
+    """
+    try:
+        # Get queue name from environment
+        queue_name = os.environ.get('QUEUE_NAME')
+        if not queue_name:
+            return {
+                'statusCode': 500,
+                'body': json.dumps({'error': 'QUEUE_NAME environment variable not set'})
+            }
 
-if __name__ == "__main__":
-    client = get_mongo_client()
-    print("Connected to MongoDB")
-    
-    # Get the postings collection from housing database
-    collection = get_database(client)
-    
-    # Read all documents from the postings collection
-    documents = list(collection.find())
-    print(f"Found {len(documents)} documents in postings collection:")
-    for doc in documents:
-        print(doc)
-    
+        # Create SQS client and get queue URL
+        sqs = boto3.client('sqs')
+        queue_url_response = sqs.get_queue_url(QueueName=queue_name)
+        queue_url = queue_url_response['QueueUrl']
+
+        # Create the message
+        message = {
+            'message': 'Hello World from Producer Lambda!',
+            'timestamp': str(context.aws_request_id) if context else 'local',
+            'producer_function': context.function_name if context else 'local_test'
+        }
+
+        # Send message to queue
+        response = sqs.send_message(
+            QueueUrl=queue_url,
+            MessageBody=json.dumps(message)
+        )
+
+        print(f"Message sent to queue. MessageId: {response.get('MessageId')}")
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps({
+                'message': 'Hello World message sent to queue',
+                'message_id': response.get('MessageId'),
+                'queue_name': queue_name
+            })
+        }
+
+    except Exception as e:
+        print(f"Error sending message to queue: {str(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'error': str(e)})
+        }
