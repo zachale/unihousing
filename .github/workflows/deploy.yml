@@ -38,16 +38,14 @@ jobs:
       run: sam --version
 
     - name: Build application
-      run: |
-        cd scraper
-        sam build
+      run: sam build
 
     - name: Deploy to AWS
       run: |
-        cd scraper
         sam deploy \
           --stack-name ${{ env.STACK_NAME }} \
           --parameter-overrides MongoConnectionString="${{ secrets.MONGO_CONNECTION_STRING }}" \
           --capabilities CAPABILITY_IAM \
+          --resolve-s3 \
           --no-confirm-changeset \
           --disable-rollback
