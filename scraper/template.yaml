@@ -27,6 +27,7 @@ Resources:
           MONGO_CONNECTION_STRING: !Ref MongoConnectionString
           QUEUE_NAME: !GetAtt ScraperQueue.QueueName
           QUEUE_URL: !Ref ScraperQueue
+          LOG_LEVEL: INFO
       Timeout: 300
       Policies:
         - SQSSendMessagePolicy:
@@ -48,6 +49,7 @@ Resources:
       Environment:
         Variables:
           MONGO_CONNECTION_STRING: !Ref MongoConnectionString
+          LOG_LEVEL: INFO
       Timeout: 300
       Policies:
         - SQSPollerPolicy:
@@ -58,6 +60,21 @@ Resources:
           Properties:
             Queue: !GetAtt ScraperQueue.Arn
             BatchSize: 1
+
+  # Log groups for lambda functions with limited retention to avoid unbounded CloudWatch costs
+  ProducerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/housing-scraper-producer
+      RetentionInDays: 5
+    DeletionPolicy: Delete
+
+  ConsumerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/housing-scraper-consumer
+      RetentionInDays: 5
+    DeletionPolicy: Delete
 
 Outputs:
   ProducerLambdaFunctionArn:
