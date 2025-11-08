@@ -7,6 +7,9 @@ def lambda_handler(event, context):
     Producer Lambda handler - sends Hello World message to SQS queue
     """
     try:
+        # Create SQS client up-front so it's available regardless of which branch we take
+        sqs = boto3.client('sqs')
+
         # Prefer explicit queue URL from environment to avoid GetQueueUrl lookup
         queue_url = os.environ.get('QUEUE_URL')
         if not queue_url:
@@ -17,7 +20,6 @@ def lambda_handler(event, context):
                     'statusCode': 500,
                     'body': json.dumps({'error': 'QUEUE_URL or QUEUE_NAME environment variable not set'})
                 }
-            sqs = boto3.client('sqs')
             queue_url_response = sqs.get_queue_url(QueueName=queue_name)
             queue_url = queue_url_response['QueueUrl']
 
