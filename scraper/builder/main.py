@@ -7,6 +7,7 @@ import json
 from typing import Any
 
 from .parse_listings import parse_listing_html
+from .description_extractor import extract_description
 
 
 def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]:
@@ -36,6 +37,10 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
     if listing_id:
         parsed_listing.setdefault("listing_id", listing_id)
 
+    extracted_fields = extract_description(parsed_listing['description'])
+    if isinstance(extracted_fields, dict):
+        parsed_listing.update(extracted_fields)
+        
     return {
         "statusCode": 200,
         "body": json.dumps(parsed_listing, ensure_ascii=False),
