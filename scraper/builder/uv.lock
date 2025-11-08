@@ -20,6 +20,9 @@ name = "builder"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "boto3" },
+    { name = "dotenv" },
+    { name = "python-dotenv" },
     { name = "beautifulsoup4" },
     { name = "requests" },
 ]
