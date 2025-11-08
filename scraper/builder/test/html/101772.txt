@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- This site is optimized with the Yoast SEO plugin v26.1 - https://yoast.com/wordpress/plugins/seo/ -->
+  <link href="https://thecannon.ca/classified/housing/101772/" rel="canonical"/>
+  <meta content="en_US" property="og:locale"/>
+  <meta content="article" property="og:type"/>
+  <meta content="117 Janefield Ave, Guelph - thecannon.ca" property="og:title"/>
+  <meta content="https://thecannon.ca/classified/housing/101772/" property="og:url"/>
+  <meta content="thecannon.ca" property="og:site_name"/>
+  <meta content="2025-11-08T12:14:23+00:00" property="article:modified_time"/>
+  <meta content="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_6933eb11-3e18-46c0-8f86-bd22a60481d4_20251106214035.jpeg" property="og:image"/>
+  <meta content="904" property="og:image:width"/>
+  <meta content="1200" property="og:image:height"/>
+  <meta content="image/jpeg" property="og:image:type"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Est. reading time" name="twitter:label1"/>
+  <meta content="1 minute" name="twitter:data1"/>
+  <!-- / Yoast SEO plugin. -->
+  <title>
+   117 Janefield Ave, Guelph - thecannon.ca
+  </title>
+  <link href="//translate.google.com" rel="dns-prefetch"/>
+  <link href="//js.hcaptcha.com" rel="dns-prefetch"/>
+  <link href="//use.fontawesome.com" rel="dns-prefetch"/>
+  <link href="//hcaptcha.com" rel="dns-prefetch"/>
+  <link href="https://thecannon.ca/wp-includes/blocks/social-links/style.min.css?ver=6.8.3" id="wp-block-social-links-css" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-includes/blocks/navigation/style.min.css?ver=6.8.3" id="wp-block-navigation-css" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-content/uploads/font-awesome/v6.4.2/css/svg-with-js.css" id="font-awesome-svg-styles-css" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-content/plugins/google-language-translator/css/style.css?ver=6.0.20" id="google-language-translator-css" media="" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-includes/css/dashicons.min.css?ver=6.8.3" id="dashicons-css" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-content/themes/cannon/assets/compiled/styles/main.css?ver=1734027305" id="bds-theme-css" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-content/themes/cannon/assets/compiled/styles/print.css?ver=1705960955" id="bds-theme-print-css" media="print" rel="stylesheet"/>
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" id="font-awesome-official-css" integrity="sha384-blOohCVdhjmtROpu8+CfTnUWham9nkX7P7OZQMst+RUnhtoY/9qemFAkIKOYxDI3" media="all" rel="stylesheet"/>
+  <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v6.4.2/css/v4-shims.css" id="font-awesome-official-v4shim-css" integrity="sha384-IqMDcR2qh8kGcGdRrxwop5R2GiUY5h8aDR/LhYxPYiXh3sAAGGDkFvFqWgFvTsTd" media="all" rel="stylesheet"/>
+  <link href="https://thecannon.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthecannon.ca%2Fclassified%2Fhousing%2F101772%2F" rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"/>
+  <link href="https://thecannon.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthecannon.ca%2Fclassified%2Fhousing%2F101772%2F&amp;format=xml" rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"/>
+  <link href="https://thecannon.ca/wp-includes/js/dist/script-modules/interactivity/index.min.js?ver=55aebb6e0a16726baffb" id="@wordpress/interactivity-js-modulepreload" rel="modulepreload"/>
+  <link href="https://thecannon.ca/wp-content/uploads/2023/11/cropped-favicon-1-32x32.png" rel="icon" sizes="32x32">
+   <link href="https://thecannon.ca/wp-content/uploads/2023/11/cropped-favicon-1-192x192.png" rel="icon" sizes="192x192"/>
+   <link href="https://thecannon.ca/wp-content/uploads/2023/11/cropped-favicon-1-180x180.png" rel="apple-touch-icon"/>
+   <meta content="https://thecannon.ca/wp-content/uploads/2023/11/cropped-favicon-1-270x270.png" name="msapplication-TileImage"/>
+  </link>
+ </head>
+ <body class="wp-singular cannon_housing-template-default single single-cannon_housing postid-101772 wp-custom-logo wp-embed-responsive wp-theme-cannon logged-out standard-view">
+  <div id="bds-a11y">
+   <button class="a11y__toggle" title="Accessibility features">
+    <span class="a11y__tip">
+     Accessibility features
+    </span>
+   </button>
+   <div class="a11y">
+    <button class="a11y__button" value="contrast">
+     <span class="a11y__tip">
+      Toggle high contrast
+     </span>
+    </button>
+    <button class="a11y__button" value="font-size">
+     <span class="a11y__tip">
+      Toggle font size
+     </span>
+    </button>
+    <button class="a11y__button" value="links">
+     <span class="a11y__tip">
+      Toggle link highlight
+     </span>
+    </button>
+    <button class="a11y__button" value="images">
+     <span class="a11y__tip">
+      Toggle images
+     </span>
+    </button>
+    <button class="a11y__button" value="letter-spacing">
+     <span class="a11y__tip">
+      Toggle letter spacing
+     </span>
+    </button>
+    <button class="a11y__button" value="cursor">
+     <span class="a11y__tip">
+      Toggle large cursor
+     </span>
+    </button>
+    <button class="a11y__button" value="line-height">
+     <span class="a11y__tip">
+      Toggle line height
+     </span>
+    </button>
+    <button class="a11y__button" value="text-align">
+     <span class="a11y__tip">
+      Toggle text alignment
+     </span>
+    </button>
+   </div>
+  </div>
+  <div class="wp-site-blocks">
+   <header class="wp-block-template-part">
+    <div class="wp-block-group has-base-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-89cb1db7 wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:var(--wp--preset--spacing--40);padding-bottom:0;padding-left:var(--wp--preset--spacing--40)">
+     <div class="wp-block-group is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-4066af0c wp-block-group-is-layout-flex" style="margin-top:0;margin-bottom:0;padding-top:0.5em;padding-bottom:0.5em">
+      <div class="wp-block-group is-vertical is-layout-flex wp-container-core-group-is-layout-fe9cc265 wp-block-group-is-layout-flex">
+       <div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-0844f5dc wp-block-group-is-layout-flex">
+        <figure class="wp-block-image size-full is-resized">
+         <a href="https://guelphcampus.coop/">
+          <img alt="Guelph Campus Co-op" class="wp-image-785" decoding="async" fetchpriority="high" height="90" sizes="(max-width: 728px) 100vw, 728px" src="https://thecannon.ca/wp-content/uploads/2023/11/campuscoop-logo-black.png" srcset="https://thecannon.ca/wp-content/uploads/2023/11/campuscoop-logo-black.png 728w, https://thecannon.ca/wp-content/uploads/2023/11/campuscoop-logo-black-300x37.png 300w, https://thecannon.ca/wp-content/uploads/2023/11/campuscoop-logo-black-600x74.png 600w" style="width:auto;height:24px" width="728"/>
+         </a>
+        </figure>
+        <ul class="wp-block-social-links has-small-icon-size has-icon-color is-style-logos-only hide-on-mobile is-layout-flex wp-container-core-social-links-is-layout-f02df673 wp-block-social-links-is-layout-flex">
+         <li class="wp-social-link wp-social-link-facebook has-black-color wp-block-social-link" style="color: #000000; ">
+          <a class="wp-block-social-link-anchor" href="https://www.facebook.com/guelphbooks">
+           <svg aria-hidden="true" focusable="false" height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12c0-5.5-4.5-10-10-10z">
+            </path>
+           </svg>
+           <span class="wp-block-social-link-label screen-reader-text">
+            Facebook
+           </span>
+          </a>
+         </li>
+         <li class="wp-social-link wp-social-link-instagram has-black-color wp-block-social-link" style="color: #000000; ">
+          <a class="wp-block-social-link-anchor" href="https://www.instagram.com/guelphcampuscoop/">
+           <svg aria-hidden="true" focusable="false" height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z">
+            </path>
+           </svg>
+           <span class="wp-block-social-link-label screen-reader-text">
+            Instagram
+           </span>
+          </a>
+         </li>
+        </ul>
+        <figure class="wp-block-image size-full is-resized">
+         <a href="https://csaonline.ca/">
+          <img alt="Central Student Association" class="wp-image-674" decoding="async" height="90" src="https://thecannon.ca/wp-content/uploads/2023/11/csa-logo.png" style="width:auto;height:20px" width="260"/>
+         </a>
+        </figure>
+        <ul class="wp-block-social-links has-small-icon-size has-icon-color is-style-logos-only hide-on-mobile is-layout-flex wp-container-core-social-links-is-layout-f02df673 wp-block-social-links-is-layout-flex">
+         <li class="wp-social-link wp-social-link-facebook has-black-color wp-block-social-link" style="color: #000000; ">
+          <a class="wp-block-social-link-anchor" href="https://www.facebook.com/csaguelph">
+           <svg aria-hidden="true" focusable="false" height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12c0-5.5-4.5-10-10-10z">
+            </path>
+           </svg>
+           <span class="wp-block-social-link-label screen-reader-text">
+            Facebook
+           </span>
+          </a>
+         </li>
+         <li class="wp-social-link wp-social-link-instagram has-black-color wp-block-social-link" style="color: #000000; ">
+          <a class="wp-block-social-link-anchor" href="https://instagram.com/csaguelph">
+           <svg aria-hidden="true" focusable="false" height="24" version="1.1" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z">
+            </path>
+           </svg>
+           <span class="wp-block-social-link-label screen-reader-text">
+            Instagram
+           </span>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="wp-block-group is-vertical is-layout-flex wp-container-core-group-is-layout-fe9cc265 wp-block-group-is-layout-flex">
+       <div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-is-layout-37505225 wp-block-group-is-layout-flex">
+        <p>
+         <a class="nturl notranslate en canada single-language flag" href="#" title="English">
+          EN
+         </a>
+        </p>
+        <p>
+         <a class="nturl notranslate fr French single-language flag" href="#" title="French">
+          FR
+         </a>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="wp-block-group has-primary-background-color has-background has-global-padding is-layout-constrained wp-container-core-group-is-layout-89cb1db7 wp-block-group-is-layout-constrained" style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:var(--wp--preset--spacing--40);padding-bottom:0;padding-left:var(--wp--preset--spacing--40)">
+     <div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-8f7dce98 wp-block-group-is-layout-flex" style="margin-top:0;margin-bottom:0;padding-top:1.5em;padding-bottom:1.5em">
+      <div class="wp-block-site-logo">
+       <a class="custom-logo-link" href="https://thecannon.ca/" rel="home">
+        <img alt="The Cannon" class="custom-logo" decoding="async" height="30" sizes="(max-width: 320px) 100vw, 320px" src="https://thecannon.ca/wp-content/uploads/2023/11/cannon-logo.png" srcset="https://thecannon.ca/wp-content/uploads/2023/11/cannon-logo.png 1000w, https://thecannon.ca/wp-content/uploads/2023/11/cannon-logo-300x29.png 300w, https://thecannon.ca/wp-content/uploads/2023/11/cannon-logo-600x58.png 600w" width="320"/>
+       </a>
+      </div>
+      <nav aria-label="Main Menu" class="has-text-color has-base-color has-background has-primary-background-color items-justified-left has-text-decoration-none wp-block-navigation has-roboto-slab-font-family is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-8eed085e wp-block-navigation-is-layout-flex" style="font-style:normal;font-weight:600;text-transform:uppercase;">
+       <ul class="wp-block-navigation__container has-text-color has-base-color has-background has-primary-background-color items-justified-left has-text-decoration-none wp-block-navigation has-roboto-slab-font-family" style="font-style:normal;font-weight:600;text-transform:uppercase;">
+        <li class="wp-block-navigation-item has-child wp-block-navigation-submenu">
+         <a class="wp-block-navigation-item__content" href="#">
+          <span class="wp-block-navigation-item__label">
+           Classifieds
+          </span>
+         </a>
+         <ul class="wp-block-navigation__submenu-container has-text-color has-base-color has-background has-contrast-background-color wp-block-navigation-submenu">
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/housing/">
+            <span class="wp-block-navigation-item__label">
+             Housing
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/textbooks/">
+            <span class="wp-block-navigation-item__label">
+             Textbooks
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/classifieds/">
+            <span class="wp-block-navigation-item__label">
+             Other
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="wp-block-navigation-item wp-block-navigation-link">
+         <a class="wp-block-navigation-item__content" href="https://thecannon.ca/about-us/">
+          <span class="wp-block-navigation-item__label">
+           About
+          </span>
+         </a>
+        </li>
+        <li class="wp-block-navigation-item wp-block-navigation-link">
+         <a class="wp-block-navigation-item__content" href="https://thecannon.ca/news/">
+          <span class="wp-block-navigation-item__label">
+           News
+          </span>
+         </a>
+        </li>
+        <li class="wp-block-navigation-item has-child wp-block-navigation-submenu">
+         <a class="wp-block-navigation-item__content" href="#">
+          <span class="wp-block-navigation-item__label">
+           Help
+          </span>
+         </a>
+         <ul class="wp-block-navigation__submenu-container has-text-color has-base-color has-background has-contrast-background-color wp-block-navigation-submenu">
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/best-practices/">
+            <span class="wp-block-navigation-item__label">
+             Best Practices
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/common-questions/">
+            <span class="wp-block-navigation-item__label">
+             Common Questions
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/contact/">
+            <span class="wp-block-navigation-item__label">
+             Contact
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="wp-block-navigation-item has-child user-logged-in wp-block-navigation-submenu">
+         <a class="wp-block-navigation-item__content" href="#">
+          <span class="wp-block-navigation-item__label">
+           My Account
+          </span>
+         </a>
+         <ul class="wp-block-navigation__submenu-container has-text-color has-base-color has-background has-contrast-background-color user-logged-in wp-block-navigation-submenu">
+          <li class="wp-block-navigation-item nmr-logged-in wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/user-dashboard/">
+            <span class="wp-block-navigation-item__label">
+             Dashboard
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/user-dashboard/saved-searches/">
+            <span class="wp-block-navigation-item__label">
+             My Searches
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item nmr-logged-in wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/user-dashboard/edit-user-profile/">
+            <span class="wp-block-navigation-item__label">
+             My Profile
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item nmr-logged-in wp-block-navigation-link">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/user-dashboard/change-password/">
+            <span class="wp-block-navigation-item__label">
+             Change Password
+            </span>
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="wp-block-navigation-item user-logged-in wp-block-navigation-link">
+         <a class="wp-block-navigation-item__content" href="/user-dashboard/?action=logout">
+          <span class="wp-block-navigation-item__label">
+           Log Out
+          </span>
+         </a>
+        </li>
+        <li class="wp-block-navigation-item user-logged-out wp-block-navigation-link">
+         <a class="wp-block-navigation-item__content" href="https://thecannon.ca/user-login/">
+          <span class="wp-block-navigation-item__label">
+           Log In
+          </span>
+         </a>
+        </li>
+       </ul>
+      </nav>
+     </div>
+    </div>
+   </header>
+   <main class="wp-block-group is-layout-flow wp-block-group-is-layout-flow" style="margin-top:var(--wp--preset--spacing--50)">
+    <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+     <h1 class="wp-block-post-title" style="font-style:normal;font-weight:600; margin-bottom:var(--wp--preset--spacing--40);">
+      117 Janefield Ave, Guelph
+     </h1>
+     <dl class="classified-details housing">
+      <div class="row space-between padding-bottom-sm">
+       <div class="md">
+        117 Janefield Avenue, Guelph, ON, Canada
+       </div>
+       <div>
+        <strong>
+         $634.13
+        </strong>
+       </div>
+       <div class="features">
+        <ul class="housing-features">
+         <li class="tooltip-toggle">
+          <img alt="Parking" src="https://thecannon.ca/wp-content/themes/cannon/assets/images/parking.png"/>
+          <span class="tooltip">
+           Parking
+          </span>
+         </li>
+         <li class="tooltip-toggle">
+          <img alt="No Smoking" src="https://thecannon.ca/wp-content/themes/cannon/assets/images/smoking.png"/>
+          <span class="tooltip">
+           No Smoking
+          </span>
+         </li>
+         <li class="tooltip-toggle">
+          <img alt="Laundry Facilities" src="https://thecannon.ca/wp-content/themes/cannon/assets/images/laundry.png"/>
+          <span class="tooltip">
+           Laundry Facilities
+          </span>
+         </li>
+         <li class="tooltip-toggle">
+          <img alt="Cooking Facilities" src="https://thecannon.ca/wp-content/themes/cannon/assets/images/cooking.png"/>
+          <span class="tooltip">
+           Cooking Facilities
+          </span>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="row button-toolbar">
+       <a class="button small" href="https://maps.google.com/maps?saddr=117%20Janefield%20Avenue%2C%20Guelph%2C%20ON%2C%20Canada&amp;daddr=43.530256,-80.225966&amp;geocode=&amp;hl=en" target="_blank">
+        View Map
+       </a>
+       <a class="button small" href="#photos" target="_self">
+        View Photos
+       </a>
+       <a class="dialog-trigger button small reveal-contact-form" data-dialog="#contact-form" href="#">
+        Contact
+       </a>
+       <div aria-labelledby="contact-form-title" class="contact-form dialog" id="contact-form" role="dialog">
+        <div class="dialog-wrapper">
+         <div class="dialog-title sr-only" id="contact-form-title">
+          Contact
+         </div>
+         <button aria-label="Close" class="dialog-close">
+          <span class="dashicons dashicons-no-alt">
+          </span>
+         </button>
+         <div class="dialog-body">
+          <form action="https://thecannon.ca/classified/housing/101772/" method="POST">
+           <fieldset>
+            <div class="column align-stretch">
+             <label for="u_name">
+              Your Name
+              <span class="required">
+               *
+              </span>
+             </label>
+             <input id="u_name" maxlength="100" name="u_name" type="text" value=""/>
+            </div>
+            <div class="column align-stretch">
+             <label for="u_email">
+              Your Email
+              <span class="required">
+               *
+              </span>
+             </label>
+             <input id="u_email" maxlength="128" name="u_email" type="email" value=""/>
+            </div>
+            <div class="column align-stretch">
+             <label for="u_message">
+              Message
+              <span class="required">
+               *
+              </span>
+             </label>
+             <textarea id="u_message" name="u_message" rows="5"></textarea>
+            </div>
+            <div class="column align-stretch">
+             <div style="margin-bottom:16px">
+              <div class="h-captcha" data-sitekey="a3e6245a-f77e-4d28-bc36-5af44b388a84" id="h_contact">
+              </div>
+             </div>
+             <input name="action" type="hidden" value="contact-form"/>
+             <button type="submit">
+              Send Message
+             </button>
+            </div>
+           </fieldset>
+          </form>
+         </div>
+        </div>
+       </div>
+       <div aria-hidden="true" class="flex-grow hide-on-mobile">
+       </div>
+       <a class="button small report-abuse" href="/report-abuse/?post_id=101772">
+        Report Abuse
+       </a>
+      </div>
+      <div class="well">
+       <div class="row">
+        <div>
+         <dt>
+          Category
+         </dt>
+         <dd>
+          House
+         </dd>
+        </div>
+        <div>
+         <dt>
+          Date Available
+         </dt>
+         <dd>
+          1/Jan/2026
+         </dd>
+        </div>
+        <div>
+         <dt>
+          Date Posted
+         </dt>
+         <dd>
+          8/Nov/2025
+         </dd>
+        </div>
+       </div>
+       <div class="row">
+        <div>
+         <dt>
+          Shared
+         </dt>
+         <dd>
+          Yes
+         </dd>
+        </div>
+        <div>
+         <dt>
+          Sublet
+         </dt>
+         <dd>
+          Yes
+         </dd>
+        </div>
+        <div>
+         <dt>
+          Beds
+         </dt>
+         <dd>
+          1
+         </dd>
+        </div>
+       </div>
+      </div>
+      <div class="row">
+       <div>
+        <dt>
+         Description
+        </dt>
+        <dd class="description">
+         We’re 6 girls looking for 1 subletter to join our cozy home from January to August (8 months)! The room is fully furnished, and the house is super clean and well taken care of.
+         <br/>
+         <br/>
+         ✨ Details:
+         <br/>
+         <br/>
+         1 furnished bedrooms available
+         <br/>
+         <br/>
+         12 min bus (bus stop close by!) 30 min walk to U of G campus .
+         <br/>
+         <br/>
+         Parking spot available
+         <br/>
+         <br/>
+         Shared kitchen, living room &amp; laundry
+         <br/>
+         <br/>
+         Friendly, tidy housemates
+         <br/>
+         <br/>
+         Perfect for students looking for a comfortable and convenient spot. Message for pics or to come check it out! 💛
+        </dd>
+       </div>
+      </div>
+      <div class="row">
+       <div>
+        <dt>
+         Contact
+        </dt>
+        <dd>
+         Caitlin Sproule
+        </dd>
+       </div>
+      </div>
+      <div class="row">
+       <div id="photos">
+        <dt>
+         Photos
+        </dt>
+        <dd>
+         <ul class="masonry lightbox-gallery">
+          <li>
+           <a href="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_6933eb11-3e18-46c0-8f86-bd22a60481d4_20251106214035.jpeg">
+            <img src="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_6933eb11-3e18-46c0-8f86-bd22a60481d4_20251106214035-452x600.jpeg"/>
+           </a>
+          </li>
+          <li>
+           <a href="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_7600a3dd-be6c-4f38-89cb-e4c1402a0596_20251106214253.jpeg">
+            <img src="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_7600a3dd-be6c-4f38-89cb-e4c1402a0596_20251106214253-450x600.jpeg"/>
+           </a>
+          </li>
+          <li>
+           <a href="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_bcfec83f-75c7-4495-b14b-ad8e382f2eeb_20251106214313.jpeg">
+            <img src="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_bcfec83f-75c7-4495-b14b-ad8e382f2eeb_20251106214313-450x600.jpeg"/>
+           </a>
+          </li>
+          <li>
+           <a href="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_722866c4-395e-4e94-99c8-03003bdf5ecc_20251106214330.jpeg">
+            <img src="https://thecannon.ca/wp-content/uploads/2025/11/user_19574_722866c4-395e-4e94-99c8-03003bdf5ecc_20251106214330-450x600.jpeg"/>
+           </a>
+          </li>
+         </ul>
+        </dd>
+       </div>
+      </div>
+     </dl>
+    </div>
+    <section class="wp-block-template-part">
+     <div class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-is-layout-a666d811 wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+     </div>
+    </section>
+   </main>
+   <footer class="wp-block-template-part">
+    <div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)">
+     <div class="wp-block-group is-content-justification-space-between is-layout-flex wp-container-core-group-is-layout-d5988ff5 wp-block-group-is-layout-flex" style="border-top-color:var(--wp--preset--color--cyan-bluish-gray);border-top-width:1px;padding-top:0.5em">
+      <div class="wp-block-group is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-ce155fab wp-block-group-is-layout-flex">
+       <div class="wp-block-group is-horizontal is-content-justification-center is-layout-flex wp-container-core-group-is-layout-8558f6ec wp-block-group-is-layout-flex">
+        <p style="font-size:clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+         copyright 2025 thecannon.ca
+        </p>
+        <p style="font-size:clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+         site by
+         <a href="https://barking.ca">
+          Barking Dog Studios
+         </a>
+        </p>
+       </div>
+      </div>
+      <div class="wp-block-group is-vertical is-content-justification-center is-layout-flex wp-container-core-group-is-layout-ce155fab wp-block-group-is-layout-flex">
+       <div class="wp-block-group is-content-justification-center is-layout-flex wp-container-core-group-is-layout-b02886af wp-block-group-is-layout-flex">
+        <nav aria-label="Footer Menu" class="items-justified-center wp-block-navigation is-content-justification-center is-layout-flex wp-container-core-navigation-is-layout-a89b3969 wp-block-navigation-is-layout-flex" style="font-size:clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+         <ul class="wp-block-navigation__container items-justified-center wp-block-navigation" style="font-size:clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+          <li class="wp-block-navigation-item wp-block-navigation-link" style="font-size: clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/common-questions/">
+            <span class="wp-block-navigation-item__label">
+             Help
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link" style="font-size: clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/legal-user-agreement/">
+            <span class="wp-block-navigation-item__label">
+             Legal/User
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link" style="font-size: clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/privacy-policy/">
+            <span class="wp-block-navigation-item__label">
+             Privacy
+            </span>
+           </a>
+          </li>
+          <li class="wp-block-navigation-item wp-block-navigation-link" style="font-size: clamp(0.875em, 0.875rem + ((1vw - 0.2em) * 0.217), 1em);">
+           <a class="wp-block-navigation-item__content" href="https://thecannon.ca/credits/">
+            <span class="wp-block-navigation-item__label">
+             Credits
+            </span>
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="size18" id="flags" style="display:none">
+   <ul class="ui-sortable" id="sortable">
+    <li id="English">
+     <a class="nturl notranslate en flag canada" href="#" title="English">
+     </a>
+    </li>
+    <li id="French">
+     <a class="nturl notranslate fr flag French" href="#" title="French">
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div id="glt-footer">
+   <div class="default-language-en" id="google_language_translator">
+   </div>
+  </div>
+ </body>
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+Page Caching using Disk: Enhanced 
+
+Served from: thecannon.ca @ 2025-11-08 15:46:27 by W3 Total Cache
+-->
