@@ -49,5 +49,4 @@ jobs:
           --parameter-overrides MongoConnectionString="${{ secrets.MONGO_CONNECTION_STRING }}" \
           --capabilities CAPABILITY_IAM \
           --resolve-s3 \
-          --no-confirm-changeset \
-          --disable-rollback
+          --no-confirm-changeset
