@@ -4,17 +4,9 @@
 from __future__ import annotations
 
 import json
-from typing import Any, Iterable
-from .parse_listings import parse_listing_html
+from typing import Any
 
-def _parse_many(html_payloads: Iterable[tuple[str | None, str]]) -> list[dict[str, Any]]:
-    results: list[dict[str, Any]] = []
-    for listing_id, html in html_payloads:
-        parsed = parse_listing_html(html)
-        if listing_id:
-            parsed.setdefault("listing_id", listing_id)
-        results.append(parsed)
-    return results
+from .parse_listings import parse_listing_html
 
 
 def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]:
@@ -33,22 +25,19 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
             "body": json.dumps({"error": "html_content must be a string."}),
         }
 
-    to_parse = [(listing_id, html_content)]
-
     try:
-        parsed_results = _parse_many(to_parse)
+        parsed_listing = parse_listing_html(html_content)
     except Exception as exc:  # pragma: no cover - defensive catch for robustness
         return {
             "statusCode": 500,
             "body": json.dumps({"error": f"Failed to parse HTML: {exc}"}),
         }
 
-    body_payload: Any = parsed_results
-    if len(parsed_results) == 1:
-        body_payload = parsed_results[0]
+    if listing_id:
+        parsed_listing.setdefault("listing_id", listing_id)
 
     return {
         "statusCode": 200,
-        "body": json.dumps(body_payload, ensure_ascii=False),
+        "body": json.dumps(parsed_listing, ensure_ascii=False),
     }
 

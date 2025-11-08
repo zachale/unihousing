@@ -92,6 +92,8 @@ def parse_listing_html(html: str) -> dict[str, Any]:
         "cooking_facilities",
     }
 
+    metadata_exclusions = feature_fields | {"photos"}
+
     extracted: dict[str, Any] = {
         "headline": headline,
         "address": address,
@@ -105,7 +107,7 @@ def parse_listing_html(html: str) -> dict[str, Any]:
         extracted[field] = label.casefold() in feature_texts
 
     for field, label in FIELD_ALIASES.items():
-        if field in feature_fields:
+        if field in metadata_exclusions:
             continue
         value = metadata.get(label)
         if value is None:
