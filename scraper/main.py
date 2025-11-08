@@ -12,9 +12,11 @@ def lambda_handler(event, context):
 
         # Prefer explicit queue URL from environment to avoid GetQueueUrl lookup
         queue_url = os.environ.get('QUEUE_URL')
+        # Read queue name (may be None) for diagnostic/response purposes
+        queue_name = os.environ.get('QUEUE_NAME')
+
         if not queue_url:
             # Fallback to queue name and GetQueueUrl for local/dev convenience
-            queue_name = os.environ.get('QUEUE_NAME')
             if not queue_name:
                 return {
                     'statusCode': 500,
@@ -43,7 +45,8 @@ def lambda_handler(event, context):
             'body': json.dumps({
                 'message': 'Hello World message sent to queue',
                 'message_id': response.get('MessageId'),
-                'queue_name': queue_name
+                'queue_name': queue_name,
+                'queue_url': queue_url
             })
         }
 
