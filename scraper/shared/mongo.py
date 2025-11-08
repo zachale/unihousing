@@ -1,6 +1,7 @@
 import os
 import ssl
 from pymongo import MongoClient
+from bson import ObjectId
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,3 +24,50 @@ def get_database(client):
     Get a database from the MongoDB client.
     """
     return client["housing"]["postings"]
+
+def archive_id(id):
+    """
+    Takes a list of listing IDs and archives them by setting archived from false to true.
+
+    Parameters:
+    - id: List of listing IDs (as strings or ObjectIds)
+
+    Returns:
+    - int: Number of IDs archived
+    """
+    client = get_mongo_client()
+    collection = get_database(client)
+    
+    # Convert string IDs to ObjectIds
+    object_ids = []
+    for id_str in id:
+        try:
+            if isinstance(id_str, str):
+                object_ids.append(ObjectId(id_str))
+            elif isinstance(id_str, ObjectId):
+                object_ids.append(id_str)
+            else:
+                continue
+        except Exception:
+            continue
+    
+    if not object_ids:
+        return 0
+    
+    # Find listings with the given IDs where archived = false
+    filter_query = {
+        "_id": {"$in": object_ids},
+        "archived": False
+    }
+    
+    # Set archived = true
+    update_query = {
+        "$set": {
+            "archived": True
+        }
+    }
+    
+    # Update the listings
+    result = collection.update_many(filter_query, update_query)
+    
+    return result.modified_count
