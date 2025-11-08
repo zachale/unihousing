@@ -26,10 +26,16 @@ Resources:
         Variables:
           MONGO_CONNECTION_STRING: !Ref MongoConnectionString
           QUEUE_NAME: !GetAtt ScraperQueue.QueueName
+          QUEUE_URL: !Ref ScraperQueue
       Timeout: 300
       Policies:
         - SQSSendMessagePolicy:
             QueueName: !GetAtt ScraperQueue.QueueName
+        - Statement:
+            - Effect: Allow
+              Action:
+                - sqs:SendMessage
+              Resource: !GetAtt ScraperQueue.Arn
 
   # Second Lambda function that processes queue messages
   QueueProcessorLambdaFunction:
