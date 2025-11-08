@@ -14,4 +14,5 @@ FIELD_ALIASES = {
     "no_smoking": "No Smoking",
     "laundry_facilities": "Laundry Facilities",
     "cooking_facilities": "Cooking Facilities",
+    "photos": "Photos",
 }
