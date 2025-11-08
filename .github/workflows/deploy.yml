@@ -38,10 +38,13 @@ jobs:
       run: sam --version
 
     - name: Build application
-      run: sam build
+      run: |
+        cd scraper
+        sam build
 
     - name: Deploy to AWS
       run: |
+        cd scraper
         sam deploy \
           --stack-name ${{ env.STACK_NAME }} \
           --parameter-overrides MongoConnectionString="${{ secrets.MONGO_CONNECTION_STRING }}" \
