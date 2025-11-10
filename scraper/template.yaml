@@ -12,13 +12,13 @@ Resources:
   ScraperQueue:
     Type: AWS::SQS::Queue
     Properties:
-      QueueName: housing-scraper-queue
+      QueueName: !Sub '${AWS::StackName}-queue'
       VisibilityTimeout: 300  # 5 minutes
 
   ScraperLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: housing-scraper-producer
+      FunctionName: !Sub '${AWS::StackName}-producer'
       Runtime: python3.10
       Handler: main.lambda_handler
       CodeUri: ./
@@ -42,7 +42,7 @@ Resources:
   QueueProcessorLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: housing-scraper-consumer
+      FunctionName: !Sub '${AWS::StackName}-consumer'
       Runtime: python3.10
       Handler: queue_processor.lambda_handler
       CodeUri: ./
@@ -65,14 +65,14 @@ Resources:
   ProducerLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: /aws/lambda/housing-scraper-producer
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-producer'
       RetentionInDays: 5
     DeletionPolicy: Delete
 
   ConsumerLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: /aws/lambda/housing-scraper-consumer
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-consumer'
       RetentionInDays: 5
     DeletionPolicy: Delete
 
