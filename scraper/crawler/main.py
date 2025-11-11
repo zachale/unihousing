@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup as bs4
-import pprint
 
 # Constants
 API_URL = "https://thecannon.ca"
@@ -19,7 +18,7 @@ def get_housing_info() -> dict:
         response = requests.get(f"{API_URL}/housing/page/{page}", headers=HEADERS)
         if not response.ok:
             print(f"Error: Unable to fetch the housing page on page {page}")
-            return
+            return {}
 
         html = bs4(response.text, "html.parser")
         links = html.select(f'a[href^="{API_URL}/classified/housing"]')
@@ -30,13 +29,13 @@ def get_housing_info() -> dict:
 
         for link in links:
             print(f"Found housing link: {link['href']}")
-            posting_response = requests.get(link['href'], headers=HEADERS)
+            posting_response = requests.get(link["href"], headers=HEADERS)
             if not posting_response.ok:
                 print(f"Error: Unable to fetch the posting at {link['href']}")
                 continue
 
             posting_html = bs4(posting_response.text, "html.parser").prettify()
-            housing_links[link['href']] = posting_html
+            housing_links[link["href"]] = posting_html
 
         requests.get(f"{API_URL}/classified/housing/page/{page}")
         page += 1
