@@ -3,8 +3,11 @@ name = "scraper"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
-    "pymongo>=4.6.0",
-    "python-dotenv>=1.0.0"
+    "bs4>=0.0.2",
+    "bson>=0.5.10",
+    "dotenv>=0.9.9",
+    "pymongo>=4.15.4",
+    "requests>=2.32.5",
 ]
