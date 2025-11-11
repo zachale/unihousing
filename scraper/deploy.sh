@@ -12,6 +12,10 @@ echo "🚀 Deploying Housing Scraper..."
 echo "Stack Name: $STACK_NAME"
 echo "MongoDB Connection: $MONGO_CONNECTION"
 
+# Generate requirements.txt from uv
+echo "📝 Generating requirements.txt from uv..."
+uv export --no-hashes --format requirements-txt --no-dev -o requirements.txt
+
 # Build the application
 echo "📦 Building application..."
 sam build
@@ -46,6 +50,11 @@ echo "✅ Deployment successful!"
 echo "Producer Lambda: $PRODUCER_LAMBDA"
 echo "Consumer Lambda: $CONSUMER_LAMBDA"
 echo "Queue URL: $QUEUE_URL"
+
+# Clean up generated requirements.txt
+echo "🧹 Cleaning up..."
+rm -f requirements.txt
+
 echo ""
 echo "🧪 Test the deployment:"
 echo "aws lambda invoke --function-name $PRODUCER_LAMBDA --payload '{}' test.json"
