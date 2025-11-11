@@ -27,6 +27,27 @@ def get_database(client):
     """
     return client["housing"]["postings"]
 
+def get_listing_by_id(collection, listing_id): 
+    """
+    Fetch a listing from the database by its listing_id.
+
+    Parameters:
+    - listing_id: The listing ID to search for (as a string or ObjectId)
+
+    Returns:
+    - dict | None: The listing document if found, otherwise None
+    """
+    client = get_mongo_client()
+    collection = get_database(client)
+    
+    # Convert string ID to ObjectId if necessary
+    if isinstance(listing_id, str):
+        try:
+            listing_id = ObjectId(listing_id)
+        except Exception:
+            return None
+    
+    return collection.find_one({"_id": listing_id}) 
 
 def archive_id(id):
     """
