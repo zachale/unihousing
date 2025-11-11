@@ -19,7 +19,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub '${AWS::StackName}-producer'
-      Runtime: python3.10
+      Runtime: python3.12
       Handler: main.lambda_handler
       CodeUri: ./
       Environment:
@@ -43,7 +43,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub '${AWS::StackName}-consumer'
-      Runtime: python3.10
+      Runtime: python3.12
       Handler: queue_processor.lambda_handler
       CodeUri: ./
       Environment:
