@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "beautifulsoup4>=4.12.3",
+    "boto3>=1.40.71",
     "dotenv>=0.9.9",
     "pymango>=0.1.1",
     "pymongo>=4.15.3",
