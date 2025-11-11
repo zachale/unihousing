@@ -1,0 +1,114 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Base CloudFormation template for the housing scraper'
+
+Parameters:
+  MongoConnectionString:
+    Type: String
+    Description: 'MongoDB connection string'
+
+Resources:
+  # SQS Queue for message passing
+  ScraperQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: !Sub '${AWS::StackName}-queue'
+      VisibilityTimeout: 300  # 5 minutes
+
+  ScraperLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-producer'
+      Runtime: python3.12
+      Handler: main.lambda_handler
+      CodeUri: ./
+      Environment:
+        Variables:
+          MONGO_CONNECTION_STRING: !Ref MongoConnectionString
+          QUEUE_NAME: !GetAtt ScraperQueue.QueueName
+          QUEUE_URL: !Ref ScraperQueue
+          LOG_LEVEL: INFO
+      Timeout: 300
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt ScraperQueue.QueueName
+        - Statement:
+            - Effect: Allow
+              Action:
+                - sqs:SendMessage
+              Resource: !GetAtt ScraperQueue.Arn
+
+  # Second Lambda function that processes queue messages
+  QueueProcessorLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-consumer'
+      Runtime: python3.12
+      Handler: queue_processor.lambda_handler
+      CodeUri: ./
+      Environment:
+        Variables:
+          MONGO_CONNECTION_STRING: !Ref MongoConnectionString
+          LOG_LEVEL: INFO
+      Timeout: 300
+      Policies:
+        - SQSPollerPolicy:
+            QueueName: !GetAtt ScraperQueue.QueueName
+      Events:
+        SQSQueue:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt ScraperQueue.Arn
+            BatchSize: 1
+
+  # Log groups for lambda functions with limited retention to avoid unbounded CloudWatch costs
+  ProducerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-producer'
+      RetentionInDays: 5
+    DeletionPolicy: Delete
+
+  ConsumerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-consumer'
+      RetentionInDays: 5
+    DeletionPolicy: Delete
+
+Outputs:
+  ProducerLambdaFunctionArn:
+    Description: 'ARN of the producer Lambda function'
+    Value: !GetAtt ScraperLambdaFunction.Arn
+    Export:
+      Name: !Sub '${AWS::StackName}-ProducerLambdaArn'
+
+  ProducerLambdaFunctionName:
+    Description: 'Name of the producer Lambda function'
+    Value: !Ref ScraperLambdaFunction
+    Export:
+      Name: !Sub '${AWS::StackName}-ProducerLambdaName'
+
+  ConsumerLambdaFunctionArn:
+    Description: 'ARN of the consumer Lambda function'
+    Value: !GetAtt QueueProcessorLambdaFunction.Arn
+    Export:
+      Name: !Sub '${AWS::StackName}-ConsumerLambdaArn'
+
+  ConsumerLambdaFunctionName:
+    Description: 'Name of the consumer Lambda function'
+    Value: !Ref QueueProcessorLambdaFunction
+    Export:
+      Name: !Sub '${AWS::StackName}-ConsumerLambdaName'
+
+  QueueUrl:
+    Description: 'URL of the SQS queue'
+    Value: !Ref ScraperQueue
+    Export:
+      Name: !Sub '${AWS::StackName}-QueueUrl'
+
+  QueueArn:
+    Description: 'ARN of the SQS queue'
+    Value: !GetAtt ScraperQueue.Arn
+    Export:
+      Name: !Sub '${AWS::StackName}-QueueArn'
