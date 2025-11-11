@@ -15,4 +15,6 @@ FIELD_ALIASES = {
     "laundry_facilities": "Laundry Facilities",
     "cooking_facilities": "Cooking Facilities",
     "photos": "Photos",
+    "check_sum_description": "Check Sum Description",
+    "check_sum_json": "Check Sum JSON",
 }

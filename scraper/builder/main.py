@@ -6,7 +6,9 @@ from __future__ import annotations
 import json
 from typing import Any
 
+from scraper.shared.mongo import get_mongo_client, get_database
 from .parse_listings import parse_listing_html
+from .checksum import json_checksum, string_checksum 
 from .description_extractor import extract_description
 
 
@@ -33,13 +35,54 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
             "statusCode": 500,
             "body": json.dumps({"error": f"Failed to parse HTML: {exc}"}),
         }
-
     if listing_id:
         parsed_listing.setdefault("listing_id", listing_id)
+    else:
+        return {
+            "statusCode": 200,
+            "body": json.dumps(parsed_listing, ensure_ascii=False),
+        }
 
-    extracted_fields = extract_description(parsed_listing['description'])
-    if isinstance(extracted_fields, dict):
-        parsed_listing.update(extracted_fields)
+    client = get_mongo_client()
+    collection = get_database(client)
+    existing_listing = collection.find_one({"_id": listing_id})
+    has_existing_listing = existing_listing is not None
+    existing_listing = existing_listing or {}
+
+    db_listing = dict(parsed_listing)
+    description_text = parsed_listing.get("description") or ""
+
+
+    new_json_checksum = json_checksum(db_listing)
+    new_desc_checksum = string_checksum(description_text)
+
+    if not has_existing_listing:
+        extracted_fields = extract_description(description_text) if description_text else {}
+        if extracted_fields:
+            db_listing.update(extracted_fields)
+        document = {
+            "_id": listing_id,
+            **db_listing,
+            "check_sum_json": new_json_checksum,
+            "check_sum_description": new_desc_checksum,
+        }
+        collection.insert_one(document)
+    else:
+        updates: dict[str, Any] = {}
+        if new_json_checksum != existing_listing.get("check_sum_json"):
+            updates["check_sum_json"] = new_json_checksum
+            updates.update(db_listing)
+
+        if new_desc_checksum != existing_listing.get("check_sum_description"):
+            extracted_fields = extract_description(description_text) if description_text else {}
+            if extracted_fields:
+                db_listing.update(extracted_fields)
+            updates["check_sum_description"] = new_desc_checksum
+            updates.update(db_listing)
+
+        if updates:
+            collection.update_one({"_id": listing_id}, {"$set": updates})
+
         
     return {
         "statusCode": 200,

@@ -1,6 +1,6 @@
-def main():
-    print("Hello from scraper!")
+from shared.mongo import get_mongo_client, get_database
 
 
 if __name__ == "__main__":
-    main()
+    pass
+    
