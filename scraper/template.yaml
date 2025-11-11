@@ -44,7 +44,7 @@ Resources:
     Properties:
       FunctionName: !Sub '${AWS::StackName}-consumer'
       Runtime: python3.12
-      Handler: queue_processor.lambda_handler
+      Handler: builder.main.handler
       CodeUri: ./
       Environment:
         Variables:

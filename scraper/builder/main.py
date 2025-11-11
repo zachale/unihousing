@@ -45,7 +45,7 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
 
     client = get_mongo_client()
     collection = get_database(client)
-    existing_listing = collection.find_one({"_id": listing_id})
+    existing_listing = collection.find_one({"listing_id": listing_id})
     has_existing_listing = existing_listing is not None
     existing_listing = existing_listing or {}
 
@@ -61,7 +61,7 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
         if extracted_fields:
             db_listing.update(extracted_fields)
         document = {
-            "_id": listing_id,
+            "listing_id": listing_id,
             **db_listing,
             "check_sum_json": new_json_checksum,
             "check_sum_description": new_desc_checksum,
@@ -81,7 +81,7 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
             updates.update(db_listing)
 
         if updates:
-            collection.update_one({"_id": listing_id}, {"$set": updates})
+            collection.update_one({"listing_id": listing_id}, {"$set": updates})
 
         
     return {
