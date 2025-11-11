@@ -50,3 +50,6 @@ ignore = [
 
 [tool.ty]
 # ty configuration - using default strict settings
+
+[tool.ty.environment]
+root = ["."]

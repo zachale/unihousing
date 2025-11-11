@@ -1,11 +1,10 @@
 import argparse
 import re
-from urllib.parse import urlparse
 from pathlib import Path
+
 import requests
-from requests.exceptions import RequestException
 from bs4 import BeautifulSoup
-import sys
+from requests.exceptions import RequestException
 
 
 def fetch_and_save(id_segment: str, output_dir: Path, save_plain_text: bool = False) -> bool:
@@ -25,10 +24,7 @@ def fetch_and_save(id_segment: str, output_dir: Path, save_plain_text: bool = Fa
     for tag in soup(["script", "style", "noscript"]):
         tag.decompose()
 
-    if save_plain_text:
-        content = soup.get_text(separator="\n", strip=True)
-    else:
-        content = soup.prettify()
+    content = soup.get_text(separator="\n", strip=True) if save_plain_text else soup.prettify()
 
     output_path = output_dir / f"{id_segment}.txt"
     try:

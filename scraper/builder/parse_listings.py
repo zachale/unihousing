@@ -1,5 +1,3 @@
-
-
 from __future__ import annotations
 
 from typing import Any
@@ -7,7 +5,6 @@ from typing import Any
 from bs4 import BeautifulSoup
 
 from .constants import FIELD_ALIASES
-
 
 
 def text_or_none(node) -> str | None:

@@ -1,6 +1,7 @@
 import json
 from typing import Any
 
+
 def stable_stringify(data: Any) -> str:
     """
     Deterministic JSON serialization:
@@ -8,6 +9,7 @@ def stable_stringify(data: Any) -> str:
     - removes extra whitespace
     """
     return json.dumps(data, sort_keys=True, separators=(",", ":"))
+
 
 def fnv1a_32(text: str) -> int:
     """
@@ -19,9 +21,10 @@ def fnv1a_32(text: str) -> int:
 
     for char in text:
         hash_val ^= ord(char)
-        hash_val = (hash_val * FNV_PRIME) % (2 ** 32)
+        hash_val = (hash_val * FNV_PRIME) % (2**32)
 
     return hash_val
+
 
 def json_checksum(data: Any) -> int:
     """
@@ -29,6 +32,7 @@ def json_checksum(data: Any) -> int:
     """
     canonical = stable_stringify(data)
     return fnv1a_32(canonical)
+
 
 def string_checksum(s: str) -> int:
     """

@@ -1,4 +1,3 @@
-
 """Entry points for parsing housing listings from HTML payloads."""
 
 from __future__ import annotations
@@ -6,10 +5,11 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from scraper.shared.mongo import get_mongo_client, get_database
-from .parse_listings import parse_listing_html
-from .checksum import json_checksum, string_checksum 
+from shared.mongo import get_database, get_mongo_client
+
+from .checksum import json_checksum, string_checksum
 from .description_extractor import extract_description
+from .parse_listings import parse_listing_html
 
 
 def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]:
@@ -52,7 +52,6 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
     db_listing = dict(parsed_listing)
     description_text = parsed_listing.get("description") or ""
 
-
     new_json_checksum = json_checksum(db_listing)
     new_desc_checksum = string_checksum(description_text)
 
@@ -83,9 +82,7 @@ def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]
         if updates:
             collection.update_one({"_id": listing_id}, {"$set": updates})
 
-        
     return {
         "statusCode": 200,
         "body": json.dumps(parsed_listing, ensure_ascii=False),
     }
-

@@ -7,12 +7,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from scraper.builder.main import handler  # noqa: E402
-
+from builder.main import handler  # noqa: E402
 
 FIXTURES_DIR = Path(__file__).resolve().parent / "html"
 
@@ -216,7 +211,9 @@ def test_fixture(path: Path) -> None:
 
     body = json.loads(response["body"])
     assert isinstance(body, dict), f"Expected dict body for single listing, got {type(body)}"
-    assert body == expected, f"Parsed output mismatch for {listing_id}\nexpected: {expected}\nactual: {body}"
+    assert body == expected, (
+        f"Parsed output mismatch for {listing_id}\nexpected: {expected}\nactual: {body}"
+    )
 
 
 def main() -> int:
