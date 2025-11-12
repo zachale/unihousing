@@ -1,6 +1,3 @@
-# Makefile for Python linting with uv
-.PHONY: lint check install
-
 # Install dependencies with uv
 install:
 	uv sync --dev
@@ -11,10 +8,10 @@ lock:
 
 # Check code without making changes
 check:
-	ruff check .
-	ty check .
+	uv run ruff check .
+	uv run ty check .
 
 # Fix all auto-fixable issues
 lint:
-	ruff check --fix .
-	ruff format .
+	uv run ruff check --fix .
+	uv run ruff format .

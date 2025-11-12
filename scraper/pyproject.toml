@@ -16,8 +16,8 @@ dependencies = [
 [tool.setuptools]
 packages = ["builder", "crawler", "lambdas", "shared"]
 
-[project.optional-dependencies]
-dev = [
+[tool.uv]
+dev-dependencies = [
     "ruff>=0.8.0",
     "ty>=0.0.1a26",
     "types-requests>=2.32.0",
