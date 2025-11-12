@@ -12,10 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Create the Bedrock client
-client = boto3.client(
-    service_name="bedrock-runtime",
-    region_name="us-east-1"
-)
+client = boto3.client(service_name="bedrock-runtime", region_name="us-east-1")
 
 # Define the model
 model_id = "openai.gpt-oss-20b-1:0"
@@ -61,15 +58,9 @@ def extract_description(description: str) -> dict[str, Any]:
             inferenceConfig=inference_config,
         )
 
-        content = (
-            response.get("output", {})
-            .get("message", {})
-            .get("content", [])
-        )
+        content = response.get("output", {}).get("message", {}).get("content", [])
         text_blocks = [
-            block.get("text")
-            for block in content
-            if isinstance(block, dict) and block.get("text")
+            block.get("text") for block in content if isinstance(block, dict) and block.get("text")
         ]
         raw_payload = next((text for text in text_blocks if text.strip()), "")
         if not raw_payload:

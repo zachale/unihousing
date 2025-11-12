@@ -1,5 +1,5 @@
 import json
-import boto3
+
 
 def lambda_handler(event, context):
     """
@@ -8,10 +8,10 @@ def lambda_handler(event, context):
     print(f"Received event: {json.dumps(event)}")
 
     # Process each record in the SQS event
-    for record in event.get('Records', []):
+    for record in event.get("Records", []):
         try:
             # Parse the SQS message body
-            message_body = record['body']
+            message_body = record["body"]
             print(f"Processing message: {message_body}")
 
             # Parse the message if it's JSON
@@ -21,7 +21,7 @@ def lambda_handler(event, context):
                 message_data = message_body
 
             # Process the message (in this case, just log it)
-            if isinstance(message_data, dict) and 'message' in message_data:
+            if isinstance(message_data, dict) and "message" in message_data:
                 print(f"Hello from consumer: {message_data['message']}")
             else:
                 print(f"Received message: {message_data}")
@@ -37,10 +37,11 @@ def lambda_handler(event, context):
             raise e
 
     return {
-        'statusCode': 200,
-        'body': json.dumps({
-            'message': 'Successfully processed queue messages',
-            'message_count': len(event.get('Records', []))
-        })
+        "statusCode": 200,
+        "body": json.dumps(
+            {
+                "message": "Successfully processed queue messages",
+                "message_count": len(event.get("Records", [])),
+            }
+        ),
     }
-
