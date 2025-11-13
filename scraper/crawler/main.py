@@ -72,7 +72,7 @@ def get_housing_info() -> dict[str, str]:
     return housing_links
 
 
-def main():
+def main(_event, _context):
     housing_info = get_housing_info()
     if not housing_info:
         print("No housing information found")
