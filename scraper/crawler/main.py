@@ -130,7 +130,3 @@ def main():
         except (BotoCoreError, ClientError, RuntimeError, Exception) as e:
             # Log and continue processing other listings
             print(f"Error sending listing {listing_id} to queue: {e}")
-
-
-if __name__ == "__main__":
-    main()

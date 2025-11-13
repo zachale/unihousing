@@ -37,8 +37,6 @@ Resources:
               Action:
                 - sqs:SendMessage
               Resource: !GetAtt ScraperQueue.Arn
-    Metadata:
-      BuildMethod: python
 
   # Second Lambda function that processes queue messages
   JsonParserLambdaFunction:
@@ -62,8 +60,6 @@ Resources:
           Properties:
             Queue: !GetAtt ScraperQueue.Arn
             BatchSize: 1
-    Metadata:
-      BuildMethod: python
 
   # Log groups for lambda functions with limited retention to avoid unbounded CloudWatch costs
   ProducerLogGroup:
