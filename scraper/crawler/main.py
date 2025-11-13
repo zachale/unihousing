@@ -1,4 +1,9 @@
+import os
+import json
+import datetime
 import requests
+import boto3
+from botocore.exceptions import BotoCoreError, ClientError
 from bs4 import BeautifulSoup as bs4
 
 from shared.mongo import delete_id, get_database, get_mongo_client
@@ -88,10 +93,43 @@ def main():
     print(f"Deleted {deleted_count} listings from the database")
 
     # Process ALL listings (create, update, etc.)
-    for url, _ in housing_info.items():
+    # Prepare SQS client once
+    try:
+        sqs_client = boto3.client("sqs")
+    except Exception as e:
+        print(f"Warning: could not create boto3 SQS client: {e}")
+        sqs_client = None
+
+    for url, posting_html in housing_info.items():
         listing_id = url.rstrip(" /").split("/")[-1]
         print(f"Processing listing with ID: {listing_id}")
-        # TODO: Send this data to a queue
+
+        # Build message payload
+        message = {
+            "listing_id": listing_id,
+            "html_content": posting_html,
+            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
+            "producer": "scraper.crawler.main",
+        }
+
+        # Send to queue (best-effort)
+        try:
+            if sqs_client is None:
+                raise RuntimeError("SQS client not available")
+
+            # Resolve queue URL from environment
+            queue_url = os.environ.get("QUEUE_URL")
+            queue_name = os.environ.get("QUEUE_NAME")
+            if not queue_url:
+                if not queue_name:
+                    raise RuntimeError("QUEUE_URL or QUEUE_NAME environment variable not set")
+                queue_url = sqs_client.get_queue_url(QueueName=queue_name)["QueueUrl"]
+
+            resp = sqs_client.send_message(QueueUrl=queue_url, MessageBody=json.dumps(message))
+            print(f"Enqueued listing {listing_id}. MessageId: {resp.get('MessageId')}")
+        except (BotoCoreError, ClientError, RuntimeError, Exception) as e:
+            # Log and continue processing other listings
+            print(f"Error sending listing {listing_id} to queue: {e}")
 
 
 if __name__ == "__main__":
