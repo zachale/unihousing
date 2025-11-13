@@ -28,65 +28,42 @@ def get_database(client):
     return client["housing"]["postings"]
 
 
-def get_listing_by_id(collection, listing_id):
+def delete_id(id: list[str | ObjectId]) -> int:
     """
-    Fetch a listing from the database by its listing_id.
-
-    Parameters:
-    - listing_id: The listing ID to search for (as a string or ObjectId)
-
-    Returns:
-    - dict | None: The listing document if found, otherwise None
-    """
-    client = get_mongo_client()
-    collection = get_database(client)
-
-    # Convert string ID to ObjectId if necessary
-    if isinstance(listing_id, str):
-        try:
-            listing_id = ObjectId(listing_id)
-        except Exception:
-            return None
-
-    return collection.find_one({"_id": listing_id})
-
-
-def archive_id(id):
-    """
-    Takes a list of listing IDs and archives them by setting archived from false to true.
+    Takes a list of listing IDs and deletes them from the database.
 
     Parameters:
     - id: List of listing IDs (as strings or ObjectIds)
 
     Returns:
-    - int: Number of IDs archived
+    - int: Number of IDs deleted
     """
     client = get_mongo_client()
     collection = get_database(client)
 
-    # Convert string IDs to ObjectIds
-    object_ids = []
-    for id_str in id:
-        try:
-            if isinstance(id_str, str):
-                object_ids.append(ObjectId(id_str))
-            elif isinstance(id_str, ObjectId):
-                object_ids.append(id_str)
-            else:
+    try:
+        # Convert all IDs to ObjectId instances
+        object_ids = []
+        for id_str in id:
+            try:
+                if isinstance(id_str, str):
+                    object_ids.append(ObjectId(id_str))
+                elif isinstance(id_str, ObjectId):
+                    object_ids.append(id_str)
+                else:
+                    continue
+            except Exception:
                 continue
-        except Exception:
-            continue
 
-    if not object_ids:
-        return 0
+        if not object_ids:
+            return 0
 
-    # Find listings with the given IDs where archived = false
-    filter_query = {"_id": {"$in": object_ids}, "archived": False}
+        # Delete listings with the given IDs
+        filter_query = {"_id": {"$in": object_ids}}
 
-    # Set archived = true
-    update_query = {"$set": {"archived": True}}
+        # Delete the listings
+        result = collection.delete_many(filter_query)
 
-    # Update the listings
-    result = collection.update_many(filter_query, update_query)
-
-    return result.modified_count
+        return result.deleted_count
+    finally:
+        client.close()
