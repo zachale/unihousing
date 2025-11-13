@@ -91,13 +91,13 @@ Outputs:
 
   ConsumerLambdaFunctionArn:
     Description: 'ARN of the consumer Lambda function'
-    Value: !GetAtt QueueProcessorLambdaFunction.Arn
+    Value: !GetAtt JsonParserLambdaFunction.Arn
     Export:
       Name: !Sub '${AWS::StackName}-ConsumerLambdaArn'
 
   ConsumerLambdaFunctionName:
     Description: 'Name of the consumer Lambda function'
-    Value: !Ref QueueProcessorLambdaFunction
+    Value: !Ref JsonParserLambdaFunction
     Export:
       Name: !Sub '${AWS::StackName}-ConsumerLambdaName'
 
