@@ -66,10 +66,6 @@ def get_housing_info() -> dict[str, str]:
             posting_html = bs4(posting_response.text, "html.parser").prettify()
             housing_links[link["href"]] = posting_html
 
-            # Only scrape one listing for now
-            if len(housing_links) >= 1:
-                return housing_links
-
         requests.get(f"{API_URL}/classified/housing/page/{page}")
         page += 1
 
