@@ -42,6 +42,13 @@ def get_housing_info() -> dict[str, str]:
     page = 1
     housing_links = {}
 
+    # Prepare SQS client once
+    try:
+        sqs_client = boto3.client("sqs")
+    except Exception as e:
+        print(f"Warning: could not create boto3 SQS client: {e}")
+        sqs_client = None
+
     while True:
         print(f"Fetching page: {page}")
         response = requests.get(f"{API_URL}/housing/page/{page}", headers=HEADERS)
@@ -65,6 +72,35 @@ def get_housing_info() -> dict[str, str]:
 
             posting_html = bs4(posting_response.text, "html.parser").prettify()
             housing_links[link["href"]] = posting_html
+
+            # Send to queue immediately
+            listing_id = link["href"].rstrip(" /").split("/")[-1]
+            message = {
+                "listing_id": listing_id,
+                "html_content": posting_html,
+                "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
+                "producer": "scraper.crawler.main",
+            }
+
+            try:
+                if sqs_client is None:
+                    raise RuntimeError("SQS client not available")
+
+                queue_url = os.environ.get("QUEUE_URL")
+                queue_name = os.environ.get("QUEUE_NAME")
+                if not queue_url:
+                    if not queue_name:
+                        raise RuntimeError("QUEUE_URL or QUEUE_NAME environment variable not set")
+                    queue_url = sqs_client.get_queue_url(QueueName=queue_name)["QueueUrl"]
+
+                resp = sqs_client.send_message(QueueUrl=queue_url, MessageBody=json.dumps(message))
+                print(f"Enqueued listing {listing_id}. MessageId: {resp.get('MessageId')}")
+            except (BotoCoreError, ClientError, RuntimeError, Exception) as e:
+                print(f"Error sending listing {listing_id} to queue: {e}")
+
+            # Only scrape one listing for now
+            if len(housing_links) >= 1:
+                return housing_links
 
         requests.get(f"{API_URL}/classified/housing/page/{page}")
         page += 1
@@ -91,42 +127,3 @@ def main(_event, _context):
     print(f"Deleting listings with IDs: {existing_ids.values()}")
     deleted_count = delete_id(list(existing_ids.values()))
     print(f"Deleted {deleted_count} listings from the database")
-
-    # Process ALL listings (create, update, etc.)
-    # Prepare SQS client once
-    try:
-        sqs_client = boto3.client("sqs")
-    except Exception as e:
-        print(f"Warning: could not create boto3 SQS client: {e}")
-        sqs_client = None
-
-    for url, posting_html in housing_info.items():
-        listing_id = url.rstrip(" /").split("/")[-1]
-        print(f"Processing listing with ID: {listing_id}")
-
-        # Build message payload
-        message = {
-            "listing_id": listing_id,
-            "html_content": posting_html,
-            "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
-            "producer": "scraper.crawler.main",
-        }
-
-        # Send to queue (best-effort)
-        try:
-            if sqs_client is None:
-                raise RuntimeError("SQS client not available")
-
-            # Resolve queue URL from environment
-            queue_url = os.environ.get("QUEUE_URL")
-            queue_name = os.environ.get("QUEUE_NAME")
-            if not queue_url:
-                if not queue_name:
-                    raise RuntimeError("QUEUE_URL or QUEUE_NAME environment variable not set")
-                queue_url = sqs_client.get_queue_url(QueueName=queue_name)["QueueUrl"]
-
-            resp = sqs_client.send_message(QueueUrl=queue_url, MessageBody=json.dumps(message))
-            print(f"Enqueued listing {listing_id}. MessageId: {resp.get('MessageId')}")
-        except (BotoCoreError, ClientError, RuntimeError, Exception) as e:
-            # Log and continue processing other listings
-            print(f"Error sending listing {listing_id} to queue: {e}")

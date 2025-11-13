@@ -28,7 +28,7 @@ Resources:
           QUEUE_NAME: !GetAtt ScraperQueue.QueueName
           QUEUE_URL: !Ref ScraperQueue
           LOG_LEVEL: INFO
-      Timeout: 300
+      Timeout: 900
       Policies:
         - SQSSendMessagePolicy:
             QueueName: !GetAtt ScraperQueue.QueueName
