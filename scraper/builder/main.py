@@ -13,6 +13,23 @@ from .parse_listings import parse_listing_html
 
 
 def handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]:
+    # Handle SQS event
+    if "Records" in event:
+        results = []
+        for record in event["Records"]:
+            body = json.loads(record["body"])
+            result = process_listing(body)
+            results.append(result)
+        return {
+            "statusCode": 200,
+            "body": json.dumps(results, ensure_ascii=False),
+        }
+    else:
+        # Direct invocation
+        return process_listing(event)
+
+
+def process_listing(event: dict[str, Any]) -> dict[str, Any]:
     html_content = event.get("html_content")
     listing_id = event.get("listing_id")
 
