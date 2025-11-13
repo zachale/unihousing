@@ -18,9 +18,9 @@ Resources:
   ScraperLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub '${AWS::StackName}-producer'
+      FunctionName: !Sub '${AWS::StackName}-scraper'
       Runtime: python3.12
-      Handler: main.lambda_handler
+      Handler: crawler.main.main
       CodeUri: ./
       Environment:
         Variables:
@@ -28,7 +28,7 @@ Resources:
           QUEUE_NAME: !GetAtt ScraperQueue.QueueName
           QUEUE_URL: !Ref ScraperQueue
           LOG_LEVEL: INFO
-      Timeout: 300
+      Timeout: 900
       Policies:
         - SQSSendMessagePolicy:
             QueueName: !GetAtt ScraperQueue.QueueName
@@ -39,10 +39,10 @@ Resources:
               Resource: !GetAtt ScraperQueue.Arn
 
   # Second Lambda function that processes queue messages
-  QueueProcessorLambdaFunction:
+  JsonParserLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub '${AWS::StackName}-consumer'
+      FunctionName: !Sub '${AWS::StackName}-JsonParser'
       Runtime: python3.12
       Handler: builder.main.handler
       CodeUri: ./
@@ -65,14 +65,14 @@ Resources:
   ProducerLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-producer'
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-scraper'
       RetentionInDays: 5
     DeletionPolicy: Delete
 
   ConsumerLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-consumer'
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-JsonParser'
       RetentionInDays: 5
     DeletionPolicy: Delete
 
@@ -91,13 +91,13 @@ Outputs:
 
   ConsumerLambdaFunctionArn:
     Description: 'ARN of the consumer Lambda function'
-    Value: !GetAtt QueueProcessorLambdaFunction.Arn
+    Value: !GetAtt JsonParserLambdaFunction.Arn
     Export:
       Name: !Sub '${AWS::StackName}-ConsumerLambdaArn'
 
   ConsumerLambdaFunctionName:
     Description: 'Name of the consumer Lambda function'
-    Value: !Ref QueueProcessorLambdaFunction
+    Value: !Ref JsonParserLambdaFunction
     Export:
       Name: !Sub '${AWS::StackName}-ConsumerLambdaName'
 
