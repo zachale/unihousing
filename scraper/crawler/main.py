@@ -98,10 +98,6 @@ def get_housing_info() -> dict[str, str]:
             except (BotoCoreError, ClientError, RuntimeError, Exception) as e:
                 print(f"Error sending listing {listing_id} to queue: {e}")
 
-            # Only scrape one listing for now
-            if len(housing_links) >= 1:
-                return housing_links
-
         requests.get(f"{API_URL}/classified/housing/page/{page}")
         page += 1
 
