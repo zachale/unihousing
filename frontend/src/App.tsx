@@ -1,27 +1,21 @@
-import { useState } from 'react'
 import './App.css'
+import { SchoolCombobox } from '@/components/school-combobox/school-combobox'
+import { Navbar } from '@/components/navbar'
+import { HouseDecoration } from '@/components/house-decoration'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      <Navbar />
       <div>
         <a href="https://react.dev" target="_blank">
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 className="tagline">Find a lease <strong><em>seriously</em></strong> fast</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <SchoolCombobox />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <HouseDecoration />
     </>
   )
 }
