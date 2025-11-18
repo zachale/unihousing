@@ -57,8 +57,28 @@ def get_housing_info() -> dict[str, str]:
             return housing_links
 
         html = bs4(response.text, "html.parser")
-        links = html.select(f'a[href^="{API_URL}/classified/housing"]')
 
+        # Get all housing items first
+        housing_items = html.select('li.housing-item')
+        
+        # Filter out items that have "Wanted" or "For Sale"
+        filtered_items = []
+        for item in housing_items:
+            wanted_div = item.select_one('.wanted-forsale')
+            if wanted_div:
+                # Skip items that are "Wanted" or "For Sale"
+                continue
+            filtered_items.append(item)
+        
+        # Extract links from filtered items
+        links = []
+        for item in filtered_items:
+            link_element = item.select_one('a[href^="https://thecannon.ca/classified/housing"]')
+            if link_element:
+                links.append(link_element)
+
+        print(f"Found {len(links)} housing links on page {page}")
+        
         # If no housing links are found, break the loop!
         if not links:
             break
@@ -123,3 +143,6 @@ def main(_event, _context):
     print(f"Deleting listings with IDs: {existing_ids.values()}")
     deleted_count = delete_id(list(existing_ids.values()))
     print(f"Deleted {deleted_count} listings from the database")
+
+if __name__ == "__main__":
+    main(None, None)
