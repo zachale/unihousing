@@ -3,6 +3,7 @@ import os
 from bson import ObjectId
 from dotenv import load_dotenv
 from pymongo import MongoClient
+from typing import List, Dict, Any, Tuple
 
 load_dotenv()
 
@@ -67,3 +68,45 @@ def delete_id(id: list[str | ObjectId]) -> int:
         return result.deleted_count
     finally:
         client.close()
+
+def get_listings(page: int = 1, page_size: int = 10) -> List[Dict[str, Any]]:
+    """
+    Return paginated listings sorted by recency (recently posted) 
+
+    Parameters: 
+    - page: Page number (default is 1)
+    - page_size: Number of listings per page 
+
+    Returns: 
+    - (items, total count)
+    """
+    client = get_mongo_client()
+    collection = get_database(client) # gets values from the "postings" collection 
+
+    try: 
+        skip = (page - 1) * page_size
+
+        # sort by date posted 
+        cursor = (
+            collection.find()
+            .sort("date_posted", -1)  # Sort by date_posted in descending order
+            .skip(skip)
+            .limit(page_size)
+        )
+        items: List[Dict[str, Any]] = []
+
+        for doc in cursor: 
+            # convert the _id to a string field called "id"
+            doc["id"] = str(doc["_id"])
+            doc.pop("_id", None)  # remove the original _id field
+
+            items.append(doc)
+
+        total = collection.count_documents({})
+
+        return items, total
+    finally:
+        client.close()
+
+
+    
