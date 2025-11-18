@@ -1,24 +1,21 @@
 # Backend API
 
-A simple Go API server with a hello world endpoint.
+A simple **FastAPI** server with a Hello World endpoint.
 
-## Running the server
+## Running the Server
+
+This project was initialized using `uv init`.
+
+Install dependencies:
 
 ```bash
-go run main.go
-```
-
-The server will start on port 8080.
-
-## Endpoint
-
-- `GET /hello` - Returns a JSON response with a hello world message
+uv add fastapi uvicorn
 
 Example:
 ```bash
 curl http://localhost:8080/hello
 ```
-
+## 
 Response:
 ```json
 {
