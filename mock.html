@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+    <title>Mock Frontend - Style Testing</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color-scheme: light;
+        color: #213547;
+        background-color: #ffffff;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        --radius: 0.625rem;
+        --pink: #ff6b9d;
+        --pink-hover: #ff4d85;
+        --border: #e5e7eb;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+        --green: #10b981;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        background: #f9fafb;
+        color: var(--text-primary);
+      }
+
+      /* Top Filter Bar */
+      .filter-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        z-index: 1000;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: white;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .filter-item:hover {
+        border-color: var(--pink);
+      }
+
+      .filter-item svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .price-filter {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: white;
+        font-size: 0.875rem;
+        /* min-width removed to fit content */
+      }
+
+      .price-inputs {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .price-input {
+        width: 80px;
+        padding: 0 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: 0.875rem;
+        outline: none;
+        transition: border-color 0.2s;
+        height: 21px; /* Matches text line-height (1.5 * 14px) for consistent bar height */
+      }
+
+      .price-input:focus {
+        border-color: var(--pink);
+      }
+      
+      .price-separator {
+        color: var(--text-secondary);
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        padding-bottom: 1rem;
+      }
+
+      .pagination-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: white;
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .pagination-button:hover:not(:disabled) {
+        border-color: var(--pink);
+        color: var(--pink);
+      }
+
+      .pagination-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: #f3f4f6;
+      }
+
+      .pagination-button.active {
+        background: var(--pink);
+        color: white;
+        border-color: var(--pink);
+      }
+
+      .pagination-ellipsis {
+        color: var(--text-secondary);
+        padding: 0 0.25rem;
+      }
+
+      .search-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--pink);
+        border: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-left: auto;
+      }
+
+      .search-button:hover {
+        background: var(--pink-hover);
+      }
+
+      /* Main Layout */
+      .main-container {
+        display: flex;
+        height: 100vh;
+        padding-top: 73px; /* Filter bar height */
+      }
+
+      /* Listings Panel */
+      .listings-panel {
+        width: 50%;
+        overflow-y: auto;
+        background: white;
+        padding: 1.5rem;
+        border-right: 1px solid var(--border);
+      }
+
+      .listings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .listing-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .listing-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .listing-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+      }
+
+      .listing-badge {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        background: var(--green);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .listing-details {
+        padding: 1rem;
+      }
+
+      .listing-address {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+
+      .listing-price {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .listing-availability {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      .listing-date-available {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+      }
+
+      /* Map Panel */
+      .map-panel {
+        width: 50%;
+        position: relative;
+        background: #e5e7eb;
+      }
+
+      .map-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 100%;
+        background: #e5e7eb;
+        display: block;
+      }
+      
+      .map-placeholder svg {
+        display: block;
+      }
+
+      /* Map Controls */
+      .map-controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: 100;
+      }
+
+      .map-control-button {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 1.25rem;
+        font-weight: 300;
+      }
+
+      .map-control-button:hover {
+        background: #f9fafb;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .legend-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+      }
+
+      .legend-color.pink {
+        background: var(--pink);
+      }
+
+      .legend-color.orange {
+        background: #f97316;
+      }
+
+      .legend-color.yellow {
+        background: #eab308;
+      }
+
+      /* Mock Map Markers */
+      .map-marker {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .map-marker.pink {
+        background: var(--pink);
+      }
+
+      .map-marker.orange {
+        background: #f97316;
+      }
+
+      .map-marker.yellow {
+        background: #eab308;
+      }
+
+      @media (max-width: 1024px) {
+        .listings-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Listing Detail View */
+      .listing-detail-container {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        height: 100%;
+        overflow-y: auto;
+        background: white;
+        padding: 2rem;
+      }
+
+      .detail-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        transition: all 0.2s;
+      }
+
+      .back-button:hover {
+        border-color: var(--pink);
+        color: var(--pink);
+      }
+
+      .detail-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: var(--radius);
+        margin-bottom: 2rem;
+        background: #e5e7eb;
+      }
+
+      .detail-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .detail-title {
+        font-family: 'Merriweather', serif;
+        font-size: 2rem;
+        margin: 0 0 0.5rem 0;
+        color: var(--text-primary);
+      }
+
+      .detail-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--pink);
+        margin-bottom: 1.5rem;
+      }
+
+      .detail-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: #f9fafb;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+      }
+
+      .info-item-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+      }
+
+      .info-item-value {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .detail-description {
+        line-height: 1.8;
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+      }
+
+      .contact-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        background: var(--pink);
+        color: white;
+        border: none;
+        border-radius: var(--radius);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+      }
+
+      .contact-button:hover {
+        background: var(--pink-hover);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Filter Bar -->
+    <div class="filter-bar">
+        <span style="font-family: 'Merriweather', serif; font-weight: 700; font-size: 1.25rem; margin-right: 0.5rem;">placeholder</span>
+      <div class="filter-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <span>University of Guelph</span>
+      </div>
+      <div class="price-filter">
+        <span>Price:</span>
+        <div class="price-inputs">
+          <input type="number" class="price-input" placeholder="Min" value="500">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" placeholder="Max" value="1500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Listings Panel -->
+      <div class="listings-panel" id="listings-panel">
+        <div class="listings-grid" id="listings-grid">
+          <!-- Content will be injected by JS -->
+        </div>
+        
+        <!-- Pagination Controls -->
+        <div class="pagination">
+          <button class="pagination-button" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="pagination-button active">1</button>
+          <button class="pagination-button">2</button>
+          <button class="pagination-button">3</button>
+          <span class="pagination-ellipsis">...</span>
+          <button class="pagination-button">8</button>
+          <button class="pagination-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Listing Detail View Container -->
+      <div class="listing-detail-container" id="listing-detail-container">
+        <!-- Content will be injected by JS -->
+      </div>
+
+      <!-- Map Panel -->
+      <div class="map-panel">
+        <div class="map-container">
+          <!-- Map Placeholder (styled to look like a map) -->
+          <div class="map-placeholder">
+            <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+              <!-- Background -->
+              <rect width="100%" height="100%" fill="#e5e7eb"/>
+              
+              <!-- Roads -->
+              <path d="M0 300 Q200 250 400 300 T800 300" stroke="#cbd5e1" stroke-width="8" fill="none"/>
+              <path d="M0 400 Q200 350 400 400 T800 400" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+              <path d="M200 0 Q200 150 200 300 T200 600" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+              <path d="M400 0 Q400 150 400 300 T400 600" stroke="#cbd5e1" stroke-width="8" fill="none"/>
+              <path d="M600 0 Q600 150 600 300 T600 600" stroke="#cbd5e1" stroke-width="6" fill="none"/>
+              
+              <!-- Neighborhood areas -->
+              <rect x="50" y="50" width="150" height="100" fill="#f3f4f6" opacity="0.5"/>
+              <rect x="250" y="150" width="120" height="80" fill="#f3f4f6" opacity="0.5"/>
+              <rect x="500" y="200" width="180" height="120" fill="#f3f4f6" opacity="0.5"/>
+              
+              <!-- Map markers (price markers) -->
+              <circle cx="150" cy="200" r="25" fill="#ff6b9d"/>
+              <text x="150" y="208" text-anchor="middle" fill="white" font-size="10" font-weight="600">$750</text>
+              
+              <circle cx="300" cy="280" r="25" fill="#f97316"/>
+              <text x="300" y="288" text-anchor="middle" fill="white" font-size="10" font-weight="600">$1,100</text>
+              
+              <circle cx="450" cy="320" r="25" fill="#eab308"/>
+              <text x="450" y="328" text-anchor="middle" fill="white" font-size="10" font-weight="600">$950</text>
+              
+              <circle cx="550" cy="250" r="25" fill="#ff6b9d"/>
+              <text x="550" y="258" text-anchor="middle" fill="white" font-size="10" font-weight="600">$850</text>
+              
+              <circle cx="650" cy="350" r="25" fill="#eab308"/>
+              <text x="650" y="358" text-anchor="middle" fill="white" font-size="10" font-weight="600">$1,200</text>
+              
+              <!-- Cluster markers (numbered) -->
+              <circle cx="250" cy="450" r="30" fill="#ff6b9d" opacity="0.8"/>
+              <text x="250" y="460" text-anchor="middle" fill="white" font-size="14" font-weight="600">7</text>
+              
+              <circle cx="500" cy="480" r="35" fill="#f97316" opacity="0.8"/>
+              <text x="500" y="492" text-anchor="middle" fill="white" font-size="16" font-weight="600">11</text>
+              
+              <circle cx="700" cy="200" r="28" fill="#eab308" opacity="0.8"/>
+              <text x="700" y="210" text-anchor="middle" fill="white" font-size="13" font-weight="600">2</text>
+            </svg>
+          </div>
+
+          <!-- Map Controls -->
+          <div class="map-controls">
+            <button class="map-control-button">+</button>
+            <button class="map-control-button">−</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Data Structure
+      const LISTINGS = [
+        {
+          id: 1,
+          address: "23, 66 Rodgers Rd, Guelph, ON",
+          price: 750,
+          dateAvailable: "May 1, 2025",
+          imageGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+          description: "Spacious room in a shared student house. Close to university bus route. Utilities included.",
+          sqft: 1200,
+          bedrooms: 4,
+          bathrooms: 2
+        },
+        {
+          id: 2,
+          address: "20 Whispering Ridge Dr, Guelph, ON",
+          price: 1100,
+          dateAvailable: "Apr 15, 2025",
+          imageGradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+          description: "Modern basement apartment with private entrance. Newly renovated kitchen and bathroom.",
+          sqft: 800,
+          bedrooms: 1,
+          bathrooms: 1
+        },
+        {
+          id: 3,
+          address: "45 Stone Rd E, Guelph, ON",
+          price: 950,
+          dateAvailable: "Jun 1, 2025",
+          imageGradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+          description: "Bright room in a convenient location near Stone Road Mall. Walking distance to grocery stores.",
+          sqft: 1500,
+          bedrooms: 5,
+          bathrooms: 2.5
+        },
+        {
+          id: 4,
+          address: "12 College Ave W, Guelph, ON",
+          price: 850,
+          dateAvailable: "Apr 15, 2025",
+          imageGradient: "linear-gradient(135deg, #ec4899 0%, #db2777 100%)",
+          description: "Charming heritage home with character. Large backyard and deck. Perfect for students.",
+          sqft: 1800,
+          bedrooms: 6,
+          bathrooms: 2
+        },
+        {
+          id: 5,
+          address: "88 Gordon St, Guelph, ON",
+          price: 1200,
+          dateAvailable: "May 1, 2025",
+          imageGradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
+          description: "Luxury condo style living. In-suite laundry and dishwasher. Gym in building.",
+          sqft: 950,
+          bedrooms: 2,
+          bathrooms: 2
+        },
+        {
+          id: 6,
+          address: "156 Edinburgh Rd S, Guelph, ON",
+          price: 1050,
+          dateAvailable: "Jun 1, 2025",
+          imageGradient: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
+          description: "Cozy bungalow in a quiet neighborhood. Hardwood floors throughout. Garage parking available.",
+          sqft: 1100,
+          bedrooms: 3,
+          bathrooms: 1
+        }
+      ];
+
+      // State Management
+      const state = {
+        listings: LISTINGS,
+        selectedListingId: null
+      };
+
+      function setState(newState) {
+        Object.assign(state, newState);
+        render();
+      }
+
+      // Render Functions
+      function renderGrid() {
+        const gridContainer = document.getElementById('listings-grid');
+        gridContainer.innerHTML = '';
+
+        state.listings.forEach(listing => {
+          const card = document.createElement('div');
+          card.className = 'listing-card';
+          card.onclick = () => setState({ selectedListingId: listing.id });
+
+          card.innerHTML = `
+            <div class="listing-image" style="background: ${listing.imageGradient};">
+            </div>
+            <div class="listing-details">
+              <div class="listing-address">${listing.address}</div>
+              <div class="listing-price">$${listing.price}/month</div>
+              <div class="listing-date-available">Available: ${listing.dateAvailable}</div>
+            </div>
+          `;
+          gridContainer.appendChild(card);
+        });
+      }
+
+      function renderDetailView(listing) {
+        const container = document.getElementById('listing-detail-container');
+        
+        if (!listing) {
+          container.innerHTML = '';
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="detail-header">
+            <button class="back-button" onclick="setState({ selectedListingId: null })">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              Back to Search
+            </button>
+            <h2 class="detail-title">${listing.address}</h2>
+            <div class="detail-price">$${listing.price}/month</div>
+          </div>
+
+          <div class="detail-image" style="background: ${listing.imageGradient};"></div>
+
+          <div class="detail-content">
+            <div class="detail-info-grid">
+              <div class="info-item">
+                <div class="info-item-label">Availability</div>
+                <div class="info-item-value">${listing.dateAvailable}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-label">Bedrooms</div>
+                <div class="info-item-value">${listing.bedrooms}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-label">Bathrooms</div>
+                <div class="info-item-value">${listing.bathrooms}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-item-label">Square Footage</div>
+                <div class="info-item-value">${listing.sqft} sq ft</div>
+              </div>
+            </div>
+
+            <div class="detail-description">
+              <h3>Description</h3>
+              <p>${listing.description}</p>
+            </div>
+
+            <button class="contact-button">Contact Landlord</button>
+          </div>
+        `;
+      }
+
+      function render() {
+        const listingsPanel = document.getElementById('listings-panel');
+        const detailContainer = document.getElementById('listing-detail-container');
+
+        if (state.selectedListingId) {
+          const selectedListing = state.listings.find(l => l.id === state.selectedListingId);
+          renderDetailView(selectedListing);
+          
+          listingsPanel.style.display = 'none';
+          detailContainer.style.display = 'flex';
+        } else {
+          renderGrid();
+          
+          listingsPanel.style.display = 'block';
+          detailContainer.style.display = 'none';
+        }
+      }
+
+      // Initialize
+      render();
+    </script>
+  </body>
+</html>
